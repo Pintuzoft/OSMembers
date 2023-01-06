@@ -49,10 +49,10 @@ public void printMembers ( int client ) {
             GetClientAuthId ( player, AuthId_Steam2, steamid, sizeof(steamid) );
             fetchMember ( steamid );
             if ( strcmp ( memberName, "-" ) != 0 ) {
-                PrintToChat ( client, " \x05- %s is not a member", playerName );
+                PrintToChat ( client, " \x05- %s is recognized as member: %s", playerName, memberName );
                 continue;
             } else {
-                PrintToChat ( client, " \x05- %s is recognized as member: %s", playerName, memberName );
+                PrintToChat ( client, " \x05- %s is not a member", playerName );
                 continue;
             }
         }
@@ -69,7 +69,6 @@ public void fetchMember ( char steamid[32] ) {
         PrintToServer("[OSMembers]: Failed to prepare query[0x01] (error: %s)", error);
         Format ( memberName, sizeof(memberName), "-" );
     }
-    PrintToConsoleAll ( "MEMBERS!: Steamid: %s", steamid );
 
     SQL_BindParamString ( stmt, 0, steamid, false );
 
