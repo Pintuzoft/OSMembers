@@ -23,7 +23,7 @@ public Action Command_Members ( int client, int args ) {
         if ( playerIsReal ( player ) ) {
             GetClientName ( player, name, sizeof ( name ) );
             GetClientAuthId ( player, AuthId_Steam2, steamid, sizeof ( steamid ) );
-            PrintToChat ( client, "Player: %S - SteamID: %s", name, steamid );
+            PrintToChat ( client, "Player: %s - SteamID: %s", name, steamid );
         }
     }
 
