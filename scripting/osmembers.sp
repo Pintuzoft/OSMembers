@@ -70,6 +70,8 @@ public void fetchMember ( char steamid[32] ) {
         Format ( memberName, sizeof(memberName), "-" );
     }
 
+    SQL_BindParamString ( stmt, 0, steamid, false );
+
     if ( ! SQL_Execute ( stmt ) ) {
         SQL_GetError ( members, error, sizeof(error));
         PrintToServer("[OSMembers]: Failed to query[0x02] (error: %s)", error);
