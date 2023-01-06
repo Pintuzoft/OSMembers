@@ -16,6 +16,6 @@ public void OnPluginStart ( ) {
 }
 
 public Action Command_Members ( int client, int args ) {
-    ReplyToCommand ( client, "Members!!!" );
+    ReplyToCommand ( client, "Members!!!^neven more members!!! :D" );
     return Plugin_Handled;
 }
