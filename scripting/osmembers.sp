@@ -16,6 +16,12 @@ public void OnPluginStart ( ) {
 }
 
 public Action Command_Members ( int client, int args ) {
-    ReplyToCommand ( client, "Members!!!^reven more members!!! :D" );
+    ReplyToCommand ( client, "Members!!! \n even more members ^n even more members \r even more members ^r even more members" );
+
+    /* print several lines to chat */
+
+    
+
+
     return Plugin_Handled;
 }
