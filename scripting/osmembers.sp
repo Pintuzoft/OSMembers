@@ -26,10 +26,6 @@ public Action Command_Members ( int client, int args ) {
     return Plugin_Handled;
 }
 
-/* get member by steamid from database */
-
-/* check database connection */
-
 public void checkConnection ( ) {
     if ( members == null || members == INVALID_HANDLE ) {
         databaseConnect ( );
@@ -65,7 +61,7 @@ public void printMembers ( int client ) {
 public void fetchMember ( char steamid[32] ) {
     char query[255];
     DBStatement stmt;
-    query = "SELECT member FROM members WHERE steamid = ?";
+    query = "SELECT name FROM user WHERE steamid = ?";
 
     if ( ( stmt = SQL_PrepareQuery ( members, query, error, sizeof(error) ) ) == null ) {
         SQL_GetError ( members, error, sizeof(error) );
