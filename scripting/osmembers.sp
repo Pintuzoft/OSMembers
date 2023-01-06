@@ -2,7 +2,6 @@
 #include <sdktools>
 #include <cstrike>
 
-
 public Plugin myinfo = {
 	name = "OSMembers",
 	author = "Pintuz",
@@ -16,12 +15,28 @@ public void OnPluginStart ( ) {
 }
 
 public Action Command_Members ( int client, int args ) {
-    ReplyToCommand ( client, "Members!!! \n even more members ^n even more members \r even more members ^r even more members" );
+    char name[64];
+    char steamid[32];
+    /* loop players and check database for user info */
 
-    /* print several lines to chat */
-
-    
-
+    for ( int player = 1; player <= MaxClients; player++ ) {
+        if ( playerIsReal ( player ) ) {
+            GetClientName ( player, name, sizeof ( name ) );
+            GetClientAuthId ( player, AuthId_Steam2, steamid, sizeof ( steamid ) );
+            PrintToChat ( client, "Player: %S - SteamID: %s", name, steamid );
+        }
+    }
 
     return Plugin_Handled;
 }
+
+public bool playerIsReal ( int player ) {
+    if ( IsClientInGame ( player ) && 
+         ! IsFakeClient ( player ) &&
+         ! IsClientSourceTV ( player ) ) {
+        return true;
+    }
+    return false;
+}
+
+
