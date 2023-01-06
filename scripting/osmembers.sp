@@ -69,6 +69,7 @@ public void fetchMember ( char steamid[32] ) {
         PrintToServer("[OSMembers]: Failed to prepare query[0x01] (error: %s)", error);
         Format ( memberName, sizeof(memberName), "-" );
     }
+    PrintToConsoleAll ( "MEMBERS!: Steamid: %s", steamid );
 
     SQL_BindParamString ( stmt, 0, steamid, false );
 
